@@ -1,0 +1,100 @@
+<!-- <div *ngIf="usuario">
+  <h1>Perfil de usuario especialista</h1>
+  <div>
+    <img [src]="usuario.imagenPerfil" alt="Imagen de Perfil" />
+  </div>
+  <div>
+    <label>Nombre: </label>
+    <span>{{ usuario.name }}</span>
+  </div>
+
+  <div>
+    <label>Apellido: </label>
+    <span>{{ usuario.lastName }}</span>
+  </div>
+
+  <div>
+    <label>Edad: </label>
+    <span>{{ usuario.edad }}</span>
+  </div>
+
+  <div>
+    <label>Email: </label>
+    <span>{{ usuario.email }}</span>
+  </div>
+
+  <div>
+    <label>DNI: </label>
+    <span>{{ usuario.dni }}</span>
+  </div>
+
+  <div>
+    <label>Habilitado en el sistema: </label>
+    <span>{{ usuario.cuentaVerificada ? "Sí" : "No" }}</span>
+  </div>
+  <div>
+    <label>UID: </label>
+    <span>{{ usuario.uid }}</span>
+  </div>
+</div>
+ -->
+<div *ngIf="usuario">
+  <main class="container">
+    <div class="card">
+      <div class="text-center">
+        <h1><u> Especialista </u></h1>
+        <img [src]="usuario.imagenPerfil" alt="Imagen de Perfil" />
+
+        <div class="name">{{ usuario.name }} {{ usuario.lastName }}</div>
+      </div>
+      <div class="contact">
+        <div>
+          <label
+            >Edad: <span>{{ usuario.edad }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >Email: <span> {{ usuario.email }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >DNI: <span> {{ usuario.dni }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >Email Verificado:
+            <span> {{ usuario.emailVerificado ? "Sí" : "No" }}</span></label
+          >
+        </div>
+        <div>
+          <label
+            >Habilitado en el sistema:
+            <span>{{ usuario.cuentaVerificada ? "Sí" : "No" }}</span></label
+          >
+        </div>
+        <div>
+          <button
+            class="btn btn-danger"
+            *ngIf="usuario.cuentaVerificada"
+            (click)="inhabilitar()"
+          >
+            inhabilitar
+          </button>
+          <button
+            class="btn btn-primary"
+            *ngIf="!usuario.cuentaVerificada"
+            (click)="habilitar()"
+          >
+            habilitar
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

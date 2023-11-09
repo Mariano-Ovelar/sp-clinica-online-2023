@@ -1,0 +1,38 @@
+<div *ngIf="usuario">
+  <main class="container">
+    <div class="card">
+      <div class="text-center">
+        <h1><u> Admistrador </u></h1>
+        <img [src]="usuario.imagenPerfil" alt="Imagen de Perfil" />
+
+        <div class="name">{{ usuario.name }} {{ usuario.lastName }}</div>
+      </div>
+      <div class="contact">
+        <div>
+          <label
+            >Edad: <span>{{ usuario.edad }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >Email: <span> {{ usuario.email }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >DNI: <span> {{ usuario.dni }}</span></label
+          >
+        </div>
+
+        <div>
+          <label
+            >Email Verificado:
+            <span> {{ usuario.emailVerificado ? "Sí" : "No" }}</span></label
+          >
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

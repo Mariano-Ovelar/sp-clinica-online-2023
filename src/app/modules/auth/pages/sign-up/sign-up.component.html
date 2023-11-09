@@ -1,0 +1,21 @@
+<main class="form-signin w-100 m-auto container">
+  <div *ngIf="!formElegido">
+    <button (click)="activarForm('Paciente')" class="btn btn-primary">
+      Paciente
+    </button>
+    <button (click)="activarForm('Especialista')" class="btn btn-primary">
+      Especialista
+    </button>
+  </div>
+  <div *ngIf="formElegido">
+    <i class="fa fa-reply" (click)="activarForm('')"></i>
+  </div>
+  <app-formulario-especialista
+    *ngIf="formularioEspecialista"
+    (formulario)="signUp($event)"
+  ></app-formulario-especialista>
+  <app-formulario-paciente
+    *ngIf="formularioPaciente"
+    (formulario)="signUp($event)"
+  ></app-formulario-paciente>
+</main>

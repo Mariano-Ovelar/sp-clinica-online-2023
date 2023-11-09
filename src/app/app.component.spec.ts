@@ -14,16 +14,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'sp-clinica-online'`, () => {
+  it(`should have as title 'lab4-PP-simulacro'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('sp-clinica-online');
+    expect(app.title).toEqual('lab4-PP-simulacro');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('sp-clinica-online app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('lab4-PP-simulacro app is running!');
   });
 });

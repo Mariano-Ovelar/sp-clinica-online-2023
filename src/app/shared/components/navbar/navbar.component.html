@@ -1,0 +1,96 @@
+<nav class="navbar navbar-expand-md navbar-success mb-4">
+  <div class="container-fluid">
+    <a class="navbar-brand text-center" routerLink="">
+      <img
+        src="../../../../assets/img/logo.png"
+        alt="Logo"
+        width="70"
+        height="70"
+      />
+      <p>Clinica Online</p>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarCollapse"
+      aria-controls="navbarCollapse"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+      (click)="mostrarNavLink()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      [class]="{ collapse: verNavLink }"
+      class="navbar-collapse align-items-end"
+      id="navbarCollapse"
+    >
+      <ul class="navbar-nav me-auto mb-2 mb-md-0">
+        <li class="nav-item" *ngFor="let item of links">
+          <div *ngIf="authSrv.user">
+            <a
+              *ngIf="authSrv.user.userType == item.userType"
+              class="nav-link"
+              [routerLink]="item.url"
+              >{{ item.nombre }}</a
+            >
+          </div>
+        </li>
+      </ul>
+
+      <div class="hidden-in-bnc-app css-pddht">
+        <ul class="navbar-nav me-auto mb-2 mb-md-0 align-items-end">
+          <li class="nav-item" *ngIf="!authSrv.user">
+            <a class="nav-link" routerLink="/auth/login"> Iniciar sesión</a>
+          </li>
+
+          <li class="nav-item" *ngIf="!authSrv.user">
+            <button
+              data-bn-type="button"
+              id="header_register"
+              aria-label="register"
+              routerLink="/auth/sign-up"
+              class="btn btn-outline-dark"
+            >
+              Registrarse
+            </button>
+          </li>
+          <li>
+            <div *ngIf="authSrv.user" class="select-container text-end">
+              <button (click)="toggleInfoBox()" class="btn btn-dark">
+                {{ authSrv.user.name }}
+              </button>
+              <div *ngIf="showInfoBox" class="info-box text-start">
+                <div>
+                  <div class="text-center">
+                    <img
+                      class="imgPerfil"
+                      [src]="authSrv.user.imagenPerfil"
+                      alt=""
+                    />
+                  </div>
+                  <div>
+                    <label for=""><b>Nombre:</b> {{ authSrv.user.name }}</label>
+                  </div>
+                  <div>
+                    <label for="">
+                      <b> Correo: </b>
+                      {{ authSrv.user.email }}</label
+                    >
+                  </div>
+                </div>
+                <div class="d-flex button-salir" role="search">
+                  <button class="btn btn-danger salir" (click)="logout()">
+                    Salir
+                  </button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

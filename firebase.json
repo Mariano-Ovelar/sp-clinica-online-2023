@@ -1,0 +1,12 @@
+{
+  "hosting": {
+    "public": "dist/sp-clinica-online",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

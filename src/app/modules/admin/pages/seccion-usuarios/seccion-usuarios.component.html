@@ -1,0 +1,53 @@
+<main>
+  <!--     <div class="py-5 text-center">
+        <h1>Lista usuarios</h1>
+      </div>
+   -->
+
+  <div class="row g-5" *ngIf="!hideForm">
+    <!-- Lista usuarios -->
+    <div class="col-md-7 col-lg-8">
+      <div *ngIf="!hideForm">
+        <h4 class="mb-3">Lista usuarios</h4>
+        <button class="btn btn-success" (click)="mostrarForm()">
+          Agregar admin
+        </button>
+        <select [(ngModel)]="tipoUsuarioSeleccionado">
+          <option value="">Todos</option>
+          <option value="Admin">admin</option>
+          <option value="Paciente">paciente</option>
+          <option value="Especialista">especialista</option>
+        </select>
+
+        <app-listado-user
+          [tipoUsuarioSeleccionado]="tipoUsuarioSeleccionado"
+          (usuarioSeleccionado)="usuarioAtrapado = $event"
+        ></app-listado-user>
+      </div>
+    </div>
+
+    <!-- -->
+
+    <div class="col-md-6 col-lg-4 order-md-last">
+      <h4 class="d-flex justify-content-between align-items-center mb-3"></h4>
+      <app-detalle-admin
+        *ngIf="usuarioAtrapado && usuarioAtrapado.userType === 'Admin'"
+        [usuario]="usuarioAtrapado"
+      ></app-detalle-admin>
+      <app-detalle-especialista
+        *ngIf="usuarioAtrapado && usuarioAtrapado.userType === 'Especialista'"
+        [usuario]="usuarioAtrapado"
+      ></app-detalle-especialista>
+      <app-detalle-paciente
+        *ngIf="usuarioAtrapado && usuarioAtrapado.userType === 'Paciente'"
+        [usuario]="usuarioAtrapado"
+      ></app-detalle-paciente>
+    </div>
+  </div>
+
+  <div class="form-signin w-100 m-auto container" *ngIf="hideForm">
+    <i class="fa fa-reply" (click)="ocultarForm()"></i>
+
+    <app-formulario-admin (formulario)="signUp($event)"></app-formulario-admin>
+  </div>
+</main>
